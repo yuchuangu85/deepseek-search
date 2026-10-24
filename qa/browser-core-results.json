@@ -1,0 +1,292 @@
+{
+  "generatedAt": "2026-10-23T23:56:42.694Z",
+  "results": [
+    {
+      "id": "C1",
+      "name": "pristine empty state, 4 suggestions, demo badge, no notice",
+      "pass": true,
+      "detail": "{\"htmlLang\":\"en\",\"theme\":\"dark\",\"title\":\"DeepSeek Search\",\"url\":\"http://127.0.0.1:4321/?lang=en\",\"storageTheme\":null,\"storageLang\":null,\"emptyVisible\":true,\"loadingVisible\":false,\"resultsVisible\":false,\"noResultsVisible\":false,\"errorVisible\":false,\"noticeVisible\":false,\"resultCount\":0,\"inputValue\":\"\",\"suggestions\":4,\"demoVisible\":true,\"resultsCountText\":\"\",\"resultsQueryText\":\"\",\"resultsHeadVisible\":false} (theme follows OS: dark)"
+    },
+    {
+      "id": "C2",
+      "name": "all expected static data-testid hooks present",
+      "pass": true,
+      "detail": "missing=[]"
+    },
+    {
+      "id": "C2b",
+      "name": "result-item testid only appears with results",
+      "pass": true,
+      "detail": "initial result-item count=0"
+    },
+    {
+      "id": "C3",
+      "name": "footer shows keyboard hint",
+      "pass": true,
+      "detail": "⌘K to search from anywhere"
+    },
+    {
+      "id": "C4",
+      "name": "clear button appears when typing",
+      "pass": true,
+      "detail": "clear visible=true"
+    },
+    {
+      "id": "C5",
+      "name": "loading skeleton visible right after Enter",
+      "pass": false,
+      "detail": "loadingVisible=false"
+    },
+    {
+      "id": "C6",
+      "name": "8 result cards rendered",
+      "pass": true,
+      "detail": "count=8"
+    },
+    {
+      "id": "C7",
+      "name": "results header + count + query shown",
+      "pass": true,
+      "detail": "{\"count\":\"8 results\",\"query\":\"for “DeepSeek V4”\",\"head\":true}"
+    },
+    {
+      "id": "C8",
+      "name": "query synced into URL",
+      "pass": true,
+      "detail": "{\"q\":\"DeepSeek V4\",\"search\":\"?lang=en&q=DeepSeek+V4&theme=dark\"}"
+    },
+    {
+      "id": "C9",
+      "name": "result links target=_blank rel=noopener noreferrer, http(s)",
+      "pass": true,
+      "detail": "links=[{\"target\":\"_blank\",\"rel\":\"noopener noreferrer\",\"href\":\"https://api-docs.deepseek.com/guides/search\",\"text\":\"DeepSeek Search API: real-time web results for agents\"},{\"target\":\"_blank\",\"rel\":\"noopener noreferrer\",\"href\":\"https://techcrunch.com/2026/10/16/deepseek-v4-release/\",\"text\":\"DeepSeek V4 model release: tools, long context, and what changes\"}]"
+    },
+    {
+      "id": "C10",
+      "name": "monogram favicon tiles only, no img in results",
+      "pass": true,
+      "detail": "monograms=[\"D\",\"T\",\"G\",\"H\",\"T\",\"M\",\"H\",\"E\"] imgs=false"
+    },
+    {
+      "id": "C11",
+      "name": "summary expands and collapses",
+      "pass": true,
+      "detail": "{\"summaryBefore\":true,\"expanded\":{\"hidden\":false,\"aria\":\"true\",\"label\":\"Less\"},\"collapsed\":{\"hidden\":true,\"aria\":\"false\"}}"
+    },
+    {
+      "id": "C12",
+      "name": "copy-link gives visible feedback",
+      "pass": true,
+      "detail": "{\"label\":\"Copied\",\"copiedClass\":true,\"live\":\"Copied\"} clipboard=https://api-docs.deepseek.com/guides/search expected=https://api-docs.deepseek.com/guides/search"
+    },
+    {
+      "id": "C13",
+      "name": "clipboard receives result URL",
+      "pass": true,
+      "detail": "clipboard=https://api-docs.deepseek.com/guides/search expected=https://api-docs.deepseek.com/guides/search"
+    },
+    {
+      "id": "C14",
+      "name": "clear button returns pristine state and removes q",
+      "pass": true,
+      "detail": "{\"emptyVisible\":true,\"resultsVisible\":false,\"input\":\"\",\"staleHiddenCards\":8,\"clearUrl\":null}"
+    },
+    {
+      "id": "C15",
+      "name": "operator chip inserts syntax at caret",
+      "pass": true,
+      "detail": "{\"value\":\"DeepSeek site:\",\"caret\":14,\"focused\":true}"
+    },
+    {
+      "id": "C16",
+      "name": "help popover opens with 8 operators, focus moves inside",
+      "pass": true,
+      "detail": "{\"visible\":true,\"expanded\":\"true\",\"opRows\":8,\"focusInPopover\":true,\"activeId\":\"help-popover\",\"title\":\"Search syntax\",\"setupVisible\":true}"
+    },
+    {
+      "id": "C17",
+      "name": "help popover has setup section in mock mode (not expected for demo)",
+      "pass": true,
+      "detail": "setupVisible=true (informational; see visual review)"
+    },
+    {
+      "id": "C18",
+      "name": "Escape closes help and returns focus to help button",
+      "pass": true,
+      "detail": "{\"hidden\":true,\"expanded\":\"false\",\"activeId\":\"help-button\"}"
+    },
+    {
+      "id": "C19",
+      "name": "theme toggle switches theme and persists to localStorage",
+      "pass": true,
+      "detail": "{\"before\":\"dark\",\"after\":\"light\",\"storage\":\"light\"}"
+    },
+    {
+      "id": "C20",
+      "name": "theme persists across reload",
+      "pass": true,
+      "detail": "{\"expected\":\"light\",\"theme\":\"light\",\"storage\":\"light\",\"url\":\"http://127.0.0.1:4321/?lang=en&theme=light\"}"
+    },
+    {
+      "id": "C21.zh-CN",
+      "name": "language switch zh-CN updates all visible strings/dates/title/url state",
+      "pass": true,
+      "detail": "{\"lang\":\"zh-CN\",\"htmlLang\":\"zh-CN\",\"title\":\"“DeepSeek V4” — DeepSeek Search\",\"hero\":\"用 DeepSeek 搜索网络\",\"date\":\"2026年10月18日\",\"count\":\"8 条\",\"badStatic\":[],\"badPlaceholder\":[],\"badAria\":[]}"
+    },
+    {
+      "id": "C21.en",
+      "name": "language switch en updates all visible strings/dates/title/url state",
+      "pass": true,
+      "detail": "{\"lang\":\"en\",\"htmlLang\":\"en\",\"title\":\"“DeepSeek V4” — DeepSeek Search\",\"hero\":\"Search the web with DeepSeek\",\"date\":\"Oct 18, 2026\",\"count\":\"8 results\",\"badStatic\":[],\"badPlaceholder\":[],\"badAria\":[]}"
+    },
+    {
+      "id": "C21.ja",
+      "name": "language switch ja updates all visible strings/dates/title/url state",
+      "pass": true,
+      "detail": "{\"lang\":\"ja\",\"htmlLang\":\"ja\",\"title\":\"“DeepSeek V4” — DeepSeek Search\",\"hero\":\"DeepSeek でウェブを検索\",\"date\":\"2026年10月18日\",\"count\":\"8 件\",\"badStatic\":[],\"badPlaceholder\":[],\"badAria\":[]}"
+    },
+    {
+      "id": "C21.ko",
+      "name": "language switch ko updates all visible strings/dates/title/url state",
+      "pass": true,
+      "detail": "{\"lang\":\"ko\",\"htmlLang\":\"ko\",\"title\":\"“DeepSeek V4” — DeepSeek Search\",\"hero\":\"DeepSeek으로 웹 검색\",\"date\":\"2026년 10월 18일\",\"count\":\"8개\",\"badStatic\":[],\"badPlaceholder\":[],\"badAria\":[]}"
+    },
+    {
+      "id": "C22",
+      "name": "result dates are locale-formatted per language",
+      "pass": true,
+      "detail": "{\"zh-CN\":\"2026年10月18日\",\"en\":\"Oct 18, 2026\",\"ja\":\"2026年10月18日\",\"ko\":\"2026년 10월 18일\"}"
+    },
+    {
+      "id": "C23",
+      "name": "language persists across reload",
+      "pass": true,
+      "detail": "{\"expected\":\"ko\",\"stored\":\"ko\",\"htmlLang\":\"ko\",\"storage\":\"ko\"}"
+    },
+    {
+      "id": "C24",
+      "name": "document title is localized while results are shown",
+      "pass": true,
+      "detail": "title=“DeepSeek V4” — DeepSeek Search lang=ko"
+    },
+    {
+      "id": "C25",
+      "name": "Meta/Ctrl+K focuses search input",
+      "pass": true,
+      "detail": "{\"id\":\"search-input\",\"selected\":true}"
+    },
+    {
+      "id": "C26",
+      "name": "slash focuses search when not typing",
+      "pass": true,
+      "detail": "{\"id\":\"search-input\"}"
+    },
+    {
+      "id": "C27",
+      "name": "slash while typing is inserted, does not steal focus",
+      "pass": true,
+      "detail": "{\"id\":\"search-input\",\"value\":\"DeepSeek V4x/y/\"}"
+    },
+    {
+      "id": "C28",
+      "name": "Escape blurs search input",
+      "pass": true,
+      "detail": "{\"id\":\"\",\"tag\":\"BODY\"}"
+    },
+    {
+      "id": "C29",
+      "name": "no horizontal overflow at 1440",
+      "pass": true,
+      "detail": "{\"scrollWidth\":1440,\"innerWidth\":1440}"
+    },
+    {
+      "id": "D1",
+      "name": "?q= auto-searches on load",
+      "pass": true,
+      "detail": "{\"count\":8,\"input\":\"DeepSeek V4\",\"url\":\"http://127.0.0.1:4321/?q=DeepSeek+V4&lang=en&theme=dark\"}"
+    },
+    {
+      "id": "D2",
+      "name": "?theme=dark overrides stored light and ?lang=ja overrides stored en",
+      "pass": true,
+      "detail": "{\"theme\":\"dark\",\"lang\":\"ja\",\"storedTheme\":\"light\",\"storedLang\":\"en\"}"
+    },
+    {
+      "id": "D3",
+      "name": "invalid ?lang=fr falls back to valid language",
+      "pass": true,
+      "detail": "htmlLang=en"
+    },
+    {
+      "id": "D4",
+      "name": "?theme=light applies light theme",
+      "pass": true,
+      "detail": "theme=light"
+    },
+    {
+      "id": "D5",
+      "name": "app boots without URL params and no data leak in hash",
+      "pass": true,
+      "detail": "{\"url\":\"http://127.0.0.1:4321/#results-region\",\"empty\":true}"
+    },
+    {
+      "id": "D6",
+      "name": "no page errors so far in URL/state section",
+      "pass": true,
+      "detail": "{\"pageerror\":[],\"console\":[]}"
+    },
+    {
+      "id": "F1",
+      "name": "all data-i18n keys exist in all 4 dictionaries (30 keys)",
+      "pass": true,
+      "detail": "{\"zh-CN\":[],\"en\":[],\"ja\":[],\"ko\":[]}"
+    },
+    {
+      "id": "F2",
+      "name": "dictionaries share identical key sets",
+      "pass": true,
+      "detail": "all 58 keys present in all 4"
+    },
+    {
+      "id": "F3",
+      "name": "all 8 error codes localized with title+message in 4 languages",
+      "pass": true,
+      "detail": "{\"zh-CN\":[],\"en\":[],\"ja\":[],\"ko\":[]}"
+    },
+    {
+      "id": "F4",
+      "name": "operator help has 8 entries in every language",
+      "pass": true,
+      "detail": "{\"ops\":{\"zh-CN\":8,\"en\":8,\"ja\":8,\"ko\":8},\"opKeys\":{\"zh-CN\":\"site,excludeSite,excludeTerm,excludePhrase,exactPhrase,lang,after,before\",\"en\":\"site,excludeSite,excludeTerm,excludePhrase,exactPhrase,lang,after,before\",\"ja\":\"site,excludeSite,excludeTerm,excludePhrase,exactPhrase,lang,after,before\",\"ko\":\"site,excludeSite,excludeTerm,excludePhrase,exactPhrase,lang,after,before\"}}"
+    },
+    {
+      "id": "F5",
+      "name": "no obvious untranslated ja/ko strings (identical to zh/en)",
+      "pass": true,
+      "detail": "{\"ja\":[],\"ko\":[]}"
+    },
+    {
+      "id": "F6",
+      "name": "key Korean UI strings contain Hangul",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "id": "F7",
+      "name": "key Japanese UI strings contain kana",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "id": "F8",
+      "name": "DOM static translations match dictionaries in all 4 languages",
+      "pass": true,
+      "detail": "{\"zh-CN\":[],\"en\":[],\"ja\":[],\"ko\":[]}"
+    }
+  ],
+  "errors": {
+    "console": [],
+    "pageerror": [],
+    "requestfailed": []
+  }
+}

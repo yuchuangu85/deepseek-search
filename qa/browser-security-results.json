@@ -1,0 +1,83 @@
+{
+  "generatedAt": "2026-10-24T00:00:41.995Z",
+  "results": [
+    {
+      "id": "I1",
+      "name": "server drops javascript: URL and sanitizes data: icon from live upstream",
+      "pass": true,
+      "detail": "{\"inlineHandlers\":0,\"pwned\":null,\"anchors\":[{\"href\":\"https://example.com/safe\",\"target\":\"_blank\",\"rel\":\"noopener noreferrer\"},{\"href\":\"http://example.com/plain\",\"target\":\"_blank\",\"rel\":\"noopener noreferrer\"}],\"badScheme\":[],\"injectedElements\":0,\"siteNameText\":\"Safe\",\"siteNameHtml\":\"Safe\",\"titleText\":\"Valid https result\",\"titleHtml\":\"<a href=\\\"https://example.com/safe\\\" target=\\\"_blank\\\" rel=\\\"noopener noreferrer\\\">Valid https result</a>\",\"cards\":2,\"bodyHasOnError\":false}"
+    },
+    {
+      "id": "I2",
+      "name": "live upstream: malicious item dropped, only safe results rendered, no injected content",
+      "pass": true,
+      "detail": "{\"injected\":0,\"inlineHandlers\":0,\"siteNameText\":\"Safe\",\"titleText\":\"Valid https result\",\"pwned\":null}"
+    },
+    {
+      "id": "I3",
+      "name": "result links are http(s) only with rel=noopener noreferrer",
+      "pass": true,
+      "detail": "[{\"href\":\"https://example.com/safe\",\"target\":\"_blank\",\"rel\":\"noopener noreferrer\"},{\"href\":\"http://example.com/plain\",\"target\":\"_blank\",\"rel\":\"noopener noreferrer\"}]"
+    },
+    {
+      "id": "I4",
+      "name": "CSP present on document and restricts default/img/script/connect to self+data",
+      "pass": true,
+      "detail": "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; font-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'"
+    },
+    {
+      "id": "I5",
+      "name": "no external/third-party requests at all (no remote favicons)",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "id": "I6",
+      "name": "no page/console errors from malicious payload",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "id": "I7",
+      "name": "client-side payload: no script execution (window.__pwned undefined)",
+      "pass": true,
+      "detail": "pwned=null"
+    },
+    {
+      "id": "I8",
+      "name": "client-side payload: no img/script/inline-handler injected into results",
+      "pass": true,
+      "detail": "injected=0 inlineHandlers=0 html=&lt;img src=x onerror=\"window.__pwned=5\"&gt;Evil"
+    },
+    {
+      "id": "I9",
+      "name": "client-side payload: HTML chars escaped in title/site_name text",
+      "pass": true,
+      "detail": "{\"titleText\":\"<img src=x onerror=\\\"window.__pwned=1\\\">Injected title</img>\",\"titleHtml\":\"&lt;img src=x onerror=\\\"window.__pwned=1\\\"&gt;Injected title&lt;/img&gt;\",\"siteNameHtml\":\"&lt;img src=x onerror=\\\"window.__pwned=5\\\"&gt;Evil\"}"
+    },
+    {
+      "id": "I10",
+      "name": "client-side payload: javascript: URL not clickable, only http(s) anchors",
+      "pass": true,
+      "detail": "{\"anchors\":[{\"href\":\"https://example.com/safe\",\"target\":\"_blank\",\"rel\":\"noopener noreferrer\"}],\"badScheme\":[]}"
+    },
+    {
+      "id": "I11",
+      "name": "client-side payload: site_icon data URL not rendered as an image",
+      "pass": true,
+      "detail": "img count=0"
+    },
+    {
+      "id": "I12",
+      "name": "no external requests during client-side injection flow",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "id": "I13",
+      "name": "no page/console errors during client-side injection flow",
+      "pass": true,
+      "detail": "[]"
+    }
+  ]
+}

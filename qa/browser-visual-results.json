@@ -1,0 +1,269 @@
+{
+  "generatedAt": "2026-10-24T00:01:05.075Z",
+  "results": [
+    {
+      "id": "G1",
+      "name": "1440 empty layout: window centered, search usable, no overflow",
+      "pass": true,
+      "detail": "{\"win\":{\"x\":160,\"y\":28,\"w\":1120,\"h\":944},\"bar\":{\"w\":716,\"h\":58},\"empty\":{\"w\":716,\"h\":259.140625},\"vw\":1440,\"vh\":1000,\"scrollWidth\":1440}"
+    },
+    {
+      "id": "G2",
+      "name": "1440 results layout: 8 readable cards, no horizontal overflow",
+      "pass": true,
+      "detail": "{\"cards\":8,\"minW\":716,\"maxW\":716,\"mainScrollW\":1118,\"mainClientW\":1118,\"docScrollW\":1440,\"vw\":1440,\"cardTitleSize\":\"16.5px\",\"snippetSize\":\"13.5px\"}"
+    },
+    {
+      "id": "G3",
+      "name": "help popover shows all 8 operators at 1440x900 (no awkward clipping)",
+      "pass": false,
+      "detail": "{\"pop\":{\"top\":257,\"bottom\":797,\"left\":646,\"right\":1078,\"width\":432,\"height\":540},\"viewport\":{\"w\":1440,\"h\":900},\"appMain\":{\"top\":81,\"bottom\":839},\"appWindow\":{\"top\":28,\"bottom\":872},\"scrollHeight\":733,\"clientHeight\":538,\"scrollable\":true,\"scrollTop\":0,\"setup\":{\"top\":843,\"bottom\":978,\"height\":135},\"setupFullyVisible\":false,\"setupHeadingText\":\"Set up the API\",\"helpTitle\":\"Search syntax\",\"clippedByViewport\":false,\"clippedByWindow\":false,\"clippedByMain\":false,\"operatorsVisible\":7}"
+    },
+    {
+      "id": "G4",
+      "name": "help popover does not clip below app window at 1440x900",
+      "pass": true,
+      "detail": "{\"pop\":{\"top\":257,\"bottom\":797,\"left\":646,\"right\":1078,\"width\":432,\"height\":540},\"viewport\":{\"w\":1440,\"h\":900},\"appWindow\":{\"top\":28,\"bottom\":872},\"appMain\":{\"top\":81,\"bottom\":839},\"clippedByViewport\":false,\"clippedByWindow\":false,\"clippedByMain\":false}"
+    },
+    {
+      "id": "G5",
+      "name": "mock mode help popover still shows API setup section (content mismatch)",
+      "pass": true,
+      "detail": "setupHeading=\"Set up the API\" setupFullyVisible=false popoverScrollable=true scrollHeight=733/538"
+    },
+    {
+      "id": "G6",
+      "name": "help popover scrolls internally to reveal setup section/docs",
+      "pass": true,
+      "detail": "{\"scrollTop\":195,\"maxScroll\":195,\"setupBottom\":783,\"popBottom\":797,\"docsBottom\":783,\"docsVisible\":true,\"setupVisible\":true}"
+    },
+    {
+      "id": "G7",
+      "name": "1440 dark results rendered without overflow",
+      "pass": true,
+      "detail": "{\"theme\":\"dark\",\"docScrollW\":1440,\"vw\":1440,\"cards\":8}"
+    },
+    {
+      "id": "G8",
+      "name": "1024x768 layout valid (no overflow, usable search, cards fit)",
+      "pass": true,
+      "detail": "{\"win\":{\"x\":28,\"y\":28,\"w\":968,\"h\":712,\"bottom\":740},\"bar\":{\"w\":716},\"minCardW\":716,\"docScrollW\":1024,\"vw\":1024,\"vh\":768,\"horizontalOverflow\":false}"
+    },
+    {
+      "id": "G9",
+      "name": "390x844: no horizontal overflow, search field + cards fit",
+      "pass": true,
+      "detail": "{\"vw\":390,\"vh\":844,\"docScrollW\":390,\"submit\":{\"w\":318,\"h\":44,\"x\":38,\"y\":-55},\"theme\":{\"w\":39,\"h\":40,\"x\":330,\"y\":7},\"lang\":{\"w\":45,\"h\":40,\"x\":256,\"y\":7},\"help\":{\"w\":40,\"h\":40,\"x\":313,\"y\":9},\"search\":{\"w\":243,\"h\":42,\"x\":64,\"y\":-105},\"footer\":{\"top\":797,\"bottom\":827},\"overlapFooter\":[],\"mainScrollW\":372,\"mainClientW\":372,\"cardMinW\":340,\"cardTitleSize\":\"15.5px\",\"cardTitleLineHeight\":\"20.77px\",\"snippetSize\":\"13px\",\"lastCardBottom\":2413}"
+    },
+    {
+      "id": "G10",
+      "name": "mobile hit areas >= 40px (submit/theme/lang)",
+      "pass": true,
+      "detail": "{\"submit\":{\"w\":318,\"h\":44,\"x\":38,\"y\":-55},\"theme\":{\"w\":39,\"h\":40,\"x\":330,\"y\":7},\"lang\":{\"w\":45,\"h\":40,\"x\":256,\"y\":7}}"
+    },
+    {
+      "id": "G11",
+      "name": "footer does not cover interactive content on mobile",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "id": "G12",
+      "name": "mobile cards readable (font sizes)",
+      "pass": true,
+      "detail": "{\"title\":\"15.5px\",\"snippet\":\"13px\"}"
+    },
+    {
+      "id": "G13",
+      "name": "mobile help popover opens inside app window at 390x844",
+      "pass": false,
+      "detail": "{\"pop\":{\"top\":281,\"bottom\":805,\"left\":27,\"right\":365,\"width\":338,\"height\":523},\"viewport\":{\"w\":390,\"h\":844},\"appMain\":{\"top\":53,\"bottom\":797},\"appWindow\":{\"top\":0,\"bottom\":828},\"scrollHeight\":752,\"clientHeight\":521,\"scrollable\":true,\"setup\":{\"top\":867,\"bottom\":1021},\"setupFullyVisible\":false,\"clippedByViewport\":false,\"clippedByWindow\":false,\"clippedByMain\":true,\"operatorsVisible\":7}"
+    },
+    {
+      "id": "G14",
+      "name": "mobile help popover setup section requires inner scroll in mock mode",
+      "pass": true,
+      "detail": "setupFullyVisible=false scrollable=true setup={\"top\":867,\"bottom\":1021} popBottom=805 appWindowBottom=828"
+    },
+    {
+      "id": "G15",
+      "name": "390x844 dark results rendered without overflow",
+      "pass": true,
+      "detail": "{\"theme\":\"dark\",\"scrollW\":390,\"vw\":390,\"cards\":8}"
+    },
+    {
+      "id": "H1",
+      "name": "accessible names for input/select/theme/clear/help/copy/retry",
+      "pass": true,
+      "detail": "{\"input\":\"Search query\",\"inputPlaceholder\":\"Search the web…\",\"select\":\"Language\",\"theme\":\"Switch to dark appearance\",\"clear\":\"Clear search\",\"help\":\"Search syntax help\",\"helpClose\":\"Close\",\"noticeClose\":\"Dismiss notice\",\"retryText\":\"Try again\",\"resultLinkName\":\"DeepSeek Search API: real-time web results for agents\",\"copyName\":\"Copy link\",\"footerHint\":\"⌘K to search from anywhere\"}"
+    },
+    {
+      "id": "H2",
+      "name": "heading order starts at h1 and does not skip levels",
+      "pass": true,
+      "detail": "{\"headings\":[{\"tag\":\"H1\",\"text\":\"Search the web with DeepSeek\"},{\"tag\":\"H2\",\"text\":\"Results\"},{\"tag\":\"H3\",\"text\":\"DeepSeek Search API: real-time web results for age\"},{\"tag\":\"H3\",\"text\":\"DeepSeek V4 model release: tools, long context, an\"},{\"tag\":\"H3\",\"text\":\"deepseek-ai / DeepSeek-V4 — model card and benchma\"},{\"tag\":\"H3\",\"text\":\"Ask HN: How are you using DeepSeek Search in produ\"},{\"tag\":\"H3\",\"text\":\"A practical guide to agentic search with citation-\"},{\"tag\":\"H3\",\"text\":\"Building RAG pipelines with the Search and Fetch A\"},{\"tag\":\"H3\",\"text\":\"DeepSeek search benchmark: relevance, freshness an\"},{\"tag\":\"H3\",\"text\":\"Search syntax cheat sheet: site, lang, after and b\"}],\"skips\":[]}"
+    },
+    {
+      "id": "H3",
+      "name": "aria-live status, alert, labelled results region, dialog semantics",
+      "pass": true,
+      "detail": "{\"liveStatus\":{\"role\":\"status\",\"ariaLive\":\"polite\"},\"resultsCount\":{\"ariaLive\":\"polite\"},\"errorAlert\":{\"role\":\"alert\"},\"resultsRegion\":{\"busy\":\"false\",\"label\":\"Results\",\"tabindex\":\"-1\"},\"helpDialog\":{\"role\":\"dialog\",\"tabindex\":\"-1\",\"labelledby\":\"help-title\"}}"
+    },
+    {
+      "id": "H4",
+      "name": "skip link is first tab stop",
+      "pass": true,
+      "detail": "[{\"tag\":\"A\",\"id\":\"\",\"className\":\"skip-link\",\"testid\":null,\"text\":\"Skip to results\",\"href\":\"#results-region\",\"focusVisible\":true,\"outline\":\"none 3px\",\"boxShadow\":\"rgba(77, 107, 254, 0.32) 0px 0px 0px 3px, rgba(28, 32, 52, 0.24) 0px 10px 26px -\"},{\"tag\":\"SELECT\",\"id\":\"lang-select\",\"className\":\"\",\"testid\":\"lang-select\",\"text\":\"中文English日本語한국어\",\"href\":\"\",\"focusVisible\":true,\"outline\":\"none 3px\",\"boxShadow\":\"none\"},{\"tag\":\"BUTTON\",\"id\":\"theme-toggle\",\"className\":\"icon-btn theme-toggle\",\"testid\":\"theme-toggle\",\"text\":\"\",\"href\":\"\",\"focusVisible\":true,\"outline\":\"solid 2px\",\"boxShadow\":\"none\"}]"
+    },
+    {
+      "id": "H5",
+      "name": "tab order reaches language, theme, search, submit, help",
+      "pass": true,
+      "detail": "[\"A\",\"lang-select\",\"theme-toggle\",\"search-input\",\"search-submit\",\"BUTTON\",\"BUTTON\",\"BUTTON\",\"BUTTON\",\"help-button\",\"BUTTON\",\"BUTTON\"]"
+    },
+    {
+      "id": "H6",
+      "name": "keyboard focus is visible (:focus-visible + outline/box-shadow)",
+      "pass": true,
+      "detail": "[{\"id\":null,\"fv\":true,\"outline\":\"none 3px\",\"shadow\":\"rgba(77, 107, 254, 0.32) 0px 0px 0px 3px\"},{\"id\":\"lang-select\",\"fv\":true,\"outline\":\"none 3px\",\"shadow\":\"none\"},{\"id\":\"theme-toggle\",\"fv\":true,\"outline\":\"solid 2px\",\"shadow\":\"none\"},{\"id\":\"search-input\",\"fv\":true,\"outline\":\"none 3px\",\"shadow\":\"none\"},{\"id\":\"search-submit\",\"fv\":true,\"outline\":\"solid 2px\",\"shadow\":\"rgba(32, 48, 140, 0.35) 0px 1px 2px 0px,\"},{\"id\":null,\"fv\":true,\"outline\":\"solid 2px\",\"shadow\":\"none\"},{\"id\":null,\"fv\":true,\"outline\":\"solid 2px\",\"shadow\":\"none\"},{\"id\":null,\"fv\":true,\"outline\":\"solid 2px\",\"shadow\":\"none\"},{\"id\":null,\"fv\":true,\"outline\":\"solid 2px\",\"shadow\":\"none\"},{\"id\":\"help-button\",\"fv\":true,\"outline\":\"solid 2px\",\"shadow\":\"none\"},{\"id\":null,\"fv\":true,\"outline\":\"solid 2px\",\"shadow\":\"none\"},{\"id\":null,\"fv\":true,\"outline\":\"solid 2px\",\"shadow\":\"none\"}]"
+    },
+    {
+      "id": "H7",
+      "name": "skip link visible on focus and moves focus to results region",
+      "pass": true,
+      "detail": "{\"skipRect\":{\"w\":116.234375,\"h\":37.5,\"href\":\"#results-region\"},\"skipResult\":{\"activeId\":\"results-region\",\"activeClass\":\"results\",\"scrollTop\":0}}"
+    },
+    {
+      "id": "H8",
+      "name": "prefers-reduced-motion disables animations/transitions",
+      "pass": true,
+      "detail": "{\"reduceMatches\":true,\"body\":{\"animationDuration\":\"1e-05s\",\"transitionDuration\":\"1e-05s\"},\"window\":{\"animationDuration\":\"1e-05s\",\"transitionDuration\":\"1e-05s\"},\"card\":{\"animationDuration\":\"1e-05s\",\"transitionDuration\":\"1e-05s\"},\"skeleton\":{\"animationDuration\":\"1e-05s\",\"transitionDuration\":\"1e-05s\"},\"help\":{\"animationDuration\":\"1e-05s\",\"transitionDuration\":\"1e-05s\"}} (0.01ms = effectively none)"
+    },
+    {
+      "id": "H9",
+      "name": "text contrast meets WCAG AA at sampled UI surfaces",
+      "pass": true,
+      "detail": "[\".hero-title:15.96/4.5 21px\",\".hero-sub:6.3/4.5 14px\",\".result-title a:16.63/4.5 16.5px\",\".result-snippet:6.56/4.5 13.5px\",\".result-date:4.74/4.5 11px\",\".footer-note:4.66/4.5 10.5px\",\".demo-badge:5.87/4.5 11px\",\".results-count:6.3/4.5 12.5px\"]"
+    },
+    {
+      "id": "H10",
+      "name": "primary submit button contrast >= 4.5 (light)",
+      "pass": true,
+      "detail": "{\"bg\":\"#4a63ee\",\"color\":\"rgb(255, 255, 255)\",\"fontSize\":\"13px\",\"ratio\":4.87}"
+    },
+    {
+      "id": "H11",
+      "name": "text contrast meets WCAG AA at sampled UI surfaces",
+      "pass": true,
+      "detail": "[\".hero-title:15.75/4.5 21px\",\".hero-sub:8.28/4.5 14px\",\".result-title a:14.53/4.5 16.5px\",\".result-snippet:7.64/4.5 13.5px\",\".result-date:5.09/4.5 11px\",\".footer-note:5.16/4.5 10.5px\",\".demo-badge:7.7/4.5 11px\",\".results-count:8.28/4.5 12.5px\"]"
+    },
+    {
+      "id": "H12",
+      "name": "primary submit button contrast >= 4.5 (dark)",
+      "pass": true,
+      "detail": "{\"theme\":\"dark\",\"bg\":\"#5069f2\",\"color\":\"rgb(255, 255, 255)\",\"ratio\":4.52}"
+    },
+    {
+      "id": "K1",
+      "name": "cold load fast, few resources, no external resources",
+      "pass": true,
+      "detail": "{\"timing\":{\"domContentLoaded\":17,\"load\":32,\"ttfb\":2},\"count\":5,\"external\":[],\"resources\":[{\"name\":\"http://127.0.0.1:4321/styles.css\",\"type\":\"link\",\"ms\":2},{\"name\":\"http://127.0.0.1:4321/i18n.js\",\"type\":\"script\",\"ms\":2},{\"name\":\"http://127.0.0.1:4321/app.js\",\"type\":\"script\",\"ms\":3},{\"name\":\"http://127.0.0.1:4321/api/health\",\"type\":\"fetch\",\"ms\":1},{\"name\":\"http://127.0.0.1:4321/favicon.svg\",\"type\":\"other\",\"ms\":1}]}"
+    },
+    {
+      "id": "K2",
+      "name": "search completes reasonably fast in demo mode",
+      "pass": true,
+      "detail": "search round-trip=37ms"
+    },
+    {
+      "id": "K3",
+      "name": "no remote favicon/external requests after results (network idle)",
+      "pass": true,
+      "detail": "{\"newRequests\":[],\"externalAfter\":[]}"
+    },
+    {
+      "id": "K4",
+      "name": "no hanging resource requests after results",
+      "pass": true,
+      "detail": "inFlight=0"
+    },
+    {
+      "id": "K5",
+      "name": "CSP present and restricts img-src to self+data, no remote hosts",
+      "pass": true,
+      "detail": "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; font-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'"
+    }
+  ],
+  "helpDesktop": {
+    "pop": {
+      "top": 257,
+      "bottom": 797,
+      "left": 646,
+      "right": 1078,
+      "width": 432,
+      "height": 540
+    },
+    "viewport": {
+      "w": 1440,
+      "h": 900
+    },
+    "appMain": {
+      "top": 81,
+      "bottom": 839
+    },
+    "appWindow": {
+      "top": 28,
+      "bottom": 872
+    },
+    "scrollHeight": 733,
+    "clientHeight": 538,
+    "scrollable": true,
+    "scrollTop": 0,
+    "setup": {
+      "top": 843,
+      "bottom": 978,
+      "height": 135
+    },
+    "setupFullyVisible": false,
+    "setupHeadingText": "Set up the API",
+    "helpTitle": "Search syntax",
+    "clippedByViewport": false,
+    "clippedByWindow": false,
+    "clippedByMain": false,
+    "operatorsVisible": 7
+  },
+  "helpMobile": {
+    "pop": {
+      "top": 281,
+      "bottom": 805,
+      "left": 27,
+      "right": 365,
+      "width": 338,
+      "height": 523
+    },
+    "viewport": {
+      "w": 390,
+      "h": 844
+    },
+    "appMain": {
+      "top": 53,
+      "bottom": 797
+    },
+    "appWindow": {
+      "top": 0,
+      "bottom": 828
+    },
+    "scrollHeight": 752,
+    "clientHeight": 521,
+    "scrollable": true,
+    "setup": {
+      "top": 867,
+      "bottom": 1021
+    },
+    "setupFullyVisible": false,
+    "clippedByViewport": false,
+    "clippedByWindow": false,
+    "clippedByMain": true,
+    "operatorsVisible": 7
+  }
+}

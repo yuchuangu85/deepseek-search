@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f8fa" id="meta-theme-color">
+  <title>DeepSeek Search</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script>
+    /* Tiny no-flash bootstrap: resolve theme and language before first paint. */
+    (function () {
+      var root = document.documentElement;
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var theme = params.get('theme');
+        if (theme !== 'light' && theme !== 'dark') theme = null;
+        if (!theme) {
+          try {
+            var stored = window.localStorage.getItem('ds-theme');
+            if (stored === 'light' || stored === 'dark') theme = stored;
+          } catch (error) {}
+        }
+        if (!theme) {
+          theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        root.setAttribute('data-theme', theme);
+        root.style.colorScheme = theme;
+
+        var supported = ['zh-CN', 'en', 'ja', 'ko'];
+        function normalize(tag) {
+          if (!tag || typeof tag !== 'string') return null;
+          var value = tag.trim();
+          if (!value) return null;
+          for (var i = 0; i < supported.length; i += 1) {
+            if (supported[i].toLowerCase() === value.toLowerCase()) return supported[i];
+          }
+          var base = value.toLowerCase().split(/[-_]/)[0];
+          if (base === 'zh') return 'zh-CN';
+          if (base === 'en') return 'en';
+          if (base === 'ja') return 'ja';
+          if (base === 'ko') return 'ko';
+          return null;
+        }
+
+        var lang = normalize(params.get('lang'));
+        if (!lang) {
+          try { lang = normalize(window.localStorage.getItem('ds-lang')); } catch (error) {}
+        }
+        if (!lang) {
+          var candidates = Array.isArray(navigator.languages) ? navigator.languages.slice() : [];
+          if (navigator.language) candidates.unshift(navigator.language);
+          for (var j = 0; j < candidates.length; j += 1) {
+            lang = normalize(candidates[j]);
+            if (lang) break;
+          }
+        }
+        root.lang = lang || 'zh-CN';
+      } catch (error) {
+        root.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="runtime-config.js" defer></script>
+  <script src="i18n.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true" focusable="false" width="0" height="0">
+    <defs>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.2 4.2"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13M13 6.2l5.8 5.8-5.8 5.8"/></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.6v2M12 19.4v2M4.5 4.5l1.4 1.4M18.1 18.1l1.4 1.4M2.6 12h2M19.4 12h2M4.5 19.5l1.4-1.4M18.1 5.9l1.4-1.4"/></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.3A8.5 8.5 0 1 1 9.7 4a7 7 0 0 0 10.3 10.3Z"/></symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.4 3.8 5.2 3.8 8.5s-1.3 6.1-3.8 8.5c-2.5-2.4-3.8-5.2-3.8-8.5s1.3-6.1 3.8-8.5Z"/></symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M6.5 9.5l5.5 5.5 5.5-5.5"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 7.9v.2"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 2.6v5.5c0 4.4-2.9 8-7 9.9-4.1-1.9-7-5.5-7-9.9V5.6L12 3Z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></symbol>
+      <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3.5l2 5.5 5.5 2-5.5 2-2 5.5-2-5.5-5.5-2 5.5-2 2-5.5Z"/></symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="10" height="10" rx="2.5"/><path d="M15 6.5A2.5 2.5 0 0 0 12.5 4H6.5A2.5 2.5 0 0 0 4 6.5v6A2.5 2.5 0 0 0 6.5 15"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="15" rx="2.5"/><path d="M8 3.5v4M16 3.5v4M4 10.5h16"/></symbol>
+      <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8.5" cy="15.5" r="3.5"/><path d="M11.2 12.8L19 5M16.5 7.5l2 2M14.5 9.5l2 2"/></symbol>
+      <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4.2l8.5 15.1h-17L12 4.2Z"/><path d="M12 10v4.2M12 17.4v.2"/></symbol>
+      <symbol id="i-retry" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 4.5V9h-4.5"/></symbol>
+      <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 5h5v5M19 5l-7 7"/><path d="M18 14v4.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 4 18.5v-11A1.5 1.5 0 0 1 5.5 6H10"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+      <symbol id="i-search-spark" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l4.5 4.5"/><path d="M18.5 4.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7.7-1.8Z"/></symbol>
+    </defs>
+  </svg>
+
+
+  <a class="skip-link" href="#results-region" data-i18n="skipToResults"></a>
+
+  <div class="app-window" id="app">
+    <header class="titlebar">
+
+      <div class="titlebar-controls">
+        <span class="demo-badge" id="demo-badge" data-testid="demo-badge" hidden>
+          <span class="demo-dot" aria-hidden="true"></span>
+          <span data-i18n="demoBadge"></span>
+        </span>
+
+        <span class="control-group lang-control">
+          <svg class="icon control-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-globe"></use></svg>
+          <select id="lang-select" data-testid="lang-select" aria-label="" data-i18n-aria-label="langLabel"></select>
+          <svg class="icon control-icon chevron-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-chevron"></use></svg>
+        </span>
+
+        <button class="icon-btn theme-toggle" id="theme-toggle" data-testid="theme-toggle" type="button" aria-pressed="false" aria-label="">
+          <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-moon"></use></svg>
+          <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-sun"></use></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="app-main" id="app-main">
+      <section class="hero" aria-labelledby="hero-title">
+        <h1 class="hero-title" id="hero-title" data-i18n="heroTitle"></h1>
+        <p class="hero-sub" data-i18n="heroSubtitle"></p>
+
+        <form class="searchbar" id="search-form" role="search" novalidate autocomplete="off">
+          <span class="search-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" focusable="false"><use href="#i-search"></use></svg>
+          </span>
+          <input class="search-input" id="search-input" data-testid="search-input" type="search" name="q" maxlength="128" inputmode="search" enterkeyhint="search" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off" aria-label="" data-i18n-aria-label="searchLabel" placeholder="" data-i18n-placeholder="searchPlaceholder" aria-keyshortcuts="Meta+K Control+K /">
+          <kbd class="kbd" id="shortcut-hint" aria-hidden="true"></kbd>
+          <button class="clear-btn" id="search-clear" data-testid="search-clear" type="button" hidden aria-label="" data-i18n-aria-label="searchClear">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-x"></use></svg>
+          </button>
+          <button class="submit-btn" id="search-submit" data-testid="search-submit" type="submit">
+            <svg class="icon submit-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg>
+            <span data-i18n="searchSubmit"></span>
+          </button>
+        </form>
+
+        <div class="helper-row">
+          <div class="op-chips" role="group" data-testid="operator-chips" aria-label="" data-i18n-aria-label="helpOperatorsTitle">
+            <button class="chip op-chip" type="button" data-op="site"><code>site:</code></button>
+            <button class="chip op-chip" type="button" data-op="lang"><code>lang:</code></button>
+            <button class="chip op-chip" type="button" data-op="after"><code>after:</code></button>
+            <button class="chip op-chip" type="button" data-op="exactPhrase"><code>"…"</code></button>
+            <span class="chip-divider" aria-hidden="true"></span>
+            <button class="help-button" id="help-button" data-testid="help-button" type="button" aria-expanded="false" aria-haspopup="dialog" aria-controls="help-popover" aria-label="" data-i18n-aria-label="helpButton">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-info"></use></svg>
+            </button>
+          </div>
+
+          <div class="help-popover" id="help-popover" data-testid="help-popover" role="dialog" aria-labelledby="help-title" tabindex="-1" hidden>
+            <div class="popover-head">
+              <h2 class="popover-title" id="help-title" data-i18n="helpTitle"></h2>
+              <button class="icon-btn small" id="help-close" type="button" aria-label="" data-i18n-aria-label="helpClose">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-x"></use></svg>
+              </button>
+            </div>
+            <p class="popover-intro" data-i18n="helpIntro"></p>
+            <h3 class="popover-subhead" data-i18n="helpOperatorsTitle"></h3>
+            <div class="operator-list" id="operator-list"></div>
+            <div class="popover-setup" id="setup-section" tabindex="-1" hidden>
+              <h3 class="popover-subhead" data-i18n="helpSetupTitle"></h3>
+              <ol class="setup-steps">
+                <li data-i18n="setupStep1"></li>
+                <li><span data-i18n="setupStep2"></span> <code>DEEPSEEK_API_KEY=your_key_here</code></li>
+                <li data-i18n="setupStep3"></li>
+              </ol>
+              <a class="docs-link" id="setup-docs" href="https://api-docs.deepseek.com/zh-cn/guides/search" target="_blank" rel="noopener noreferrer">
+                <span data-i18n="setupDocs"></span>
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-external"></use></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="api-notice" id="api-notice" data-testid="api-notice" hidden>
+          <span class="notice-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" focusable="false"><use href="#i-key"></use></svg>
+          </span>
+          <div class="notice-copy">
+            <strong id="notice-title" data-i18n="noticeTitle"></strong>
+            <span id="notice-body" data-i18n="noticeBody"></span>
+            <span id="notice-offline" data-i18n="noticeOffline" hidden></span>
+          </div>
+          <button class="notice-action" id="notice-action" type="button" data-i18n="noticeSetup"></button>
+          <button class="notice-close" id="notice-close" type="button" aria-label="" data-i18n-aria-label="noticeDismiss">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-x"></use></svg>
+          </button>
+        </div>
+
+        <div class="demo-notice" id="demo-notice" data-testid="demo-notice" hidden>
+          <strong class="demo-notice-title" data-i18n="demoNoticeTitle"></strong>
+          <span data-i18n="demoNoticeBody"></span>
+          <button class="demo-notice-action" id="demo-notice-action" type="button" data-i18n="demoNoticeAction"></button>
+        </div>
+      </section>
+
+      <section class="results" id="results-region" tabindex="-1" aria-busy="false" aria-label="" data-i18n-aria-label="resultsTitle">
+        <header class="results-head" id="results-head" hidden>
+          <div class="results-head-main">
+            <h2 class="results-heading" id="results-heading" data-i18n="resultsTitle"></h2>
+            <span class="results-count" id="results-count" data-testid="results-count" aria-live="polite"></span>
+            <span class="results-query" id="results-query"></span>
+          </div>
+          <span class="results-time" id="results-time"></span>
+        </header>
+
+        <div class="state empty-state" id="empty-state" data-testid="empty-state">
+          <span class="state-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" focusable="false"><use href="#i-search-spark"></use></svg>
+          </span>
+          <h2 class="state-title" data-i18n="emptyTitle"></h2>
+          <p class="state-hint" data-i18n="emptyHint"></p>
+          <div class="suggestions" id="suggestions" data-testid="suggestions"></div>
+        </div>
+
+        <div class="loading" id="loading" data-testid="loading" hidden aria-hidden="true">
+          <div class="skeleton-card">
+            <div class="sk-row"><span class="sk sk-avatar"></span><span class="sk sk-meta"></span></div>
+            <span class="sk sk-title"></span>
+            <span class="sk sk-line"></span>
+            <span class="sk sk-line sk-short"></span>
+          </div>
+          <div class="skeleton-card">
+            <div class="sk-row"><span class="sk sk-avatar"></span><span class="sk sk-meta"></span></div>
+            <span class="sk sk-title"></span>
+            <span class="sk sk-line"></span>
+            <span class="sk sk-line sk-short"></span>
+          </div>
+          <div class="skeleton-card">
+            <div class="sk-row"><span class="sk sk-avatar"></span><span class="sk sk-meta"></span></div>
+            <span class="sk sk-title"></span>
+            <span class="sk sk-line"></span>
+            <span class="sk sk-line sk-short"></span>
+          </div>
+          <div class="skeleton-card">
+            <div class="sk-row"><span class="sk sk-avatar"></span><span class="sk sk-meta"></span></div>
+            <span class="sk sk-title"></span>
+            <span class="sk sk-line"></span>
+            <span class="sk sk-line sk-short"></span>
+          </div>
+        </div>
+
+        <ol class="result-list" id="results-list" data-testid="results" hidden></ol>
+
+        <div class="pagination" id="pagination" data-testid="pagination" hidden>
+          <nav class="pager" id="pager" aria-label="" data-i18n-aria-label="paginationLabel">
+            <button class="pager-arrow" id="pager-prev" data-testid="pager-prev" type="button" aria-label="" data-i18n-aria-label="pagePrevious">
+              <svg class="icon pager-back" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg>
+            </button>
+            <div class="pager-pages" id="pager-pages"></div>
+            <button class="pager-arrow" id="pager-next" data-testid="pager-next" type="button" aria-label="" data-i18n-aria-label="pageNext">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-arrow"></use></svg>
+            </button>
+          </nav>
+          <p class="pager-status" id="pager-status" data-testid="pager-status" aria-live="polite"></p>
+        </div>
+
+        <div class="state no-results" id="no-results" data-testid="no-results" hidden>
+          <span class="state-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" focusable="false"><use href="#i-search"></use></svg>
+          </span>
+          <h2 class="state-title" id="no-results-title"></h2>
+          <p class="state-hint" data-i18n="noResultsHint"></p>
+        </div>
+
+        <div class="state error-state" id="error-state" data-testid="error-state" role="alert" hidden>
+          <span class="state-icon error-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" focusable="false"><use href="#i-alert"></use></svg>
+          </span>
+          <h2 class="state-title" id="error-title"></h2>
+          <p class="state-hint" id="error-message"></p>
+          <button class="retry-button" id="retry-button" type="button">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#i-retry"></use></svg>
+            <span data-i18n="errorRetry"></span>
+          </button>
+        </div>
+
+        <p class="sr-only" id="live-status" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span class="footer-note" data-i18n="footerNote"></span>
+    </footer>
+  </div>
+</body>
+</html>

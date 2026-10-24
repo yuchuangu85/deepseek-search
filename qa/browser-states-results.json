@@ -1,0 +1,83 @@
+{
+  "generatedAt": "2026-10-24T00:02:03.856Z",
+  "results": [
+    {
+      "id": "E1",
+      "name": "mock mode shows demo badge and no API-setup notice",
+      "pass": true,
+      "detail": "demoBadge=true notice=false"
+    },
+    {
+      "id": "E2",
+      "name": "empty results -> localized no-results state with query",
+      "pass": true,
+      "detail": "{\"noResultsVisible\":true,\"title\":\"No results for “zzz no matches qa”\",\"hint\":\"Try fewer words, or loosen the site:, lang:, or date filters.\",\"resultsVisible\":false}"
+    },
+    {
+      "id": "E3",
+      "name": "429 -> localized rate_limited error state with retry",
+      "pass": true,
+      "detail": "{\"visible\":true,\"title\":\"Too many requests\",\"message\":\"Wait a moment, then try again.\",\"retryVisible\":true,\"retryText\":\"Try again\",\"opacity\":\"1\",\"titleColor\":\"rgb(25, 27, 34)\",\"titleFontSize\":\"16px\",\"messageColor\":\"rgb(86, 91, 105)\",\"animation\":\"fade-in\"}"
+    },
+    {
+      "id": "E4",
+      "name": "retry re-issues the same query on failure",
+      "pass": true,
+      "detail": "search hits 2 -> 3"
+    },
+    {
+      "id": "E5",
+      "name": "retry recovers to results after transient error",
+      "pass": true,
+      "detail": "{\"results\":2,\"errorHidden\":true,\"firstTitle\":\"Recovered result one\"}"
+    },
+    {
+      "id": "E6",
+      "name": "failed network request -> localized network_error state",
+      "pass": true,
+      "detail": "{\"title\":\"Can't reach the server\",\"message\":\"Check your connection and that the server is running.\",\"live\":\"\"}"
+    },
+    {
+      "id": "E7",
+      "name": "the 8 client-known error codes render their localized title",
+      "pass": true,
+      "detail": "untranslated=[]"
+    },
+    {
+      "id": "E8",
+      "name": "server-only error codes (invalid_api_key/insufficient_balance/forbidden) render specific localized messages",
+      "pass": false,
+      "detail": "{\"invalid_api_key\":{\"title\":\"Can't reach the server\",\"message\":\"Check your connection and that the server is running.\"},\"insufficient_balance\":{\"title\":\"Can't reach the server\",\"message\":\"Check your connection and that the server is running.\"},\"forbidden\":{\"title\":\"Can't reach the server\",\"message\":\"Check your connection and that the server is running.\"}}"
+    },
+    {
+      "id": "E9",
+      "name": "no JS console/page errors during intercepted state flows",
+      "pass": true,
+      "detail": "{\"console\":[],\"page\":[]}"
+    },
+    {
+      "id": "E10",
+      "name": "no-key server shows localized API setup notice (mock off)",
+      "pass": true,
+      "detail": "{\"visible\":true,\"title\":\"API key not configured\",\"body\":\"Add DEEPSEEK_API_KEY to .env and restart the server to get live results.\",\"action\":\"How to set up\",\"demo\":false,\"dict\":{\"appName\":\"DeepSeek Search\",\"docTitleSearch\":\"“{query}” — DeepSeek Search\",\"heroTitle\":\"Search the web with DeepSeek\",\"heroSubtitle\":\"Direct answers from the open web — calm, fast, and grounded in sources.\",\"searchLabel\":\"Search query\",\"searchPlaceholder\":\"Search the web…\",\"searchSubmit\":\"Search\",\"searchClear\":\"Clear search\",\"shortcutFocus\":\"Press {key} to focus the search field\",\"themeLabel\":\"Appearance\",\"themeSwitchToDark\":\"Switch to dark appearance\",\"themeSwitchToLight\":\"Switch to light appearance\",\"langLabel\":\"Language\",\"helpButton\":\"Search syntax help\",\"helpTitle\":\"Search syntax\",\"helpIntro\":\"Narrow results with operators. Combine them with ordinary keywords.\",\"helpOperatorsTitle\":\"Operators\",\"helpClose\":\"Close\",\"helpSetupTitle\":\"Set up the API\",\"setupStep1\":\"Open the .env file in the project folder.\",\"setupStep2\":\"Add this to .env:\",\"setupStep3\":\"Restart the server and reload this page.\",\"setupDocs\":\"Open the DeepSeek Search API guide\",\"noticeTitle\":\"API key not configured\",\"noticeBody\":\"Add DEEPSEEK_A"
+    },
+    {
+      "id": "E11",
+      "name": "search without key -> localized missing_api_key error",
+      "pass": true,
+      "detail": "{\"title\":\"API key required\",\"message\":\"Add DEEPSEEK_API_KEY to .env and restart the server.\",\"dict\":{\"appName\":\"DeepSeek Search\",\"docTitleSearch\":\"“{query}” — DeepSeek Search\",\"heroTitle\":\"Search the web with DeepSeek\",\"heroSubtitle\":\"Direct answers from the open web — calm, fast, and grounded in sources.\",\"searchLabel\":\"Search query\",\"searchPlaceholder\":\"Search the web…\",\"searchSubmit\":\"Search\",\"searchClear\":\"Clear search\",\"shortcutFocus\":\"Press {key} to focus the search field\",\"themeLabel\":\"Appearance\",\"themeSwitchToDark\":\"Switch to dark appearance\",\"themeSwitchToLight\":\"Switch to light appearance\",\"langLabel\":\"Language\",\"helpButton\":\"Search syntax help\",\"helpTitle\":\"Search syntax\",\"helpIntro\":\"Narrow results with operators. Combine them with ordinary keywords.\",\"helpOperatorsTitle\":\"Operators\",\"helpClose\":\"Close\",\"helpSetupTitle\":\"Set up the API\",\"setupStep1\":\"Open the .env file in the project folder.\",\"setupStep2\":\"Add this to .env:\",\"setupStep3\":\"Restart the server and reload this page.\",\"setupDocs\":\"Open the DeepSeek Search API guide\",\"noticeTitle\":\"API key not configured\",\"noticeBody\":\"Add DEEPSEEK_API_KEY to .env and restart the server to get live results.\",\"noticeOffline\":"
+    },
+    {
+      "id": "E12",
+      "name": "notice action opens help popover focused on setup section",
+      "pass": true,
+      "detail": "{\"popoverVisible\":true,\"activeId\":\"setup-section\",\"setupScrollTop\":195,\"setupRect\":647.609375,\"popTop\":257.359375,\"docsVisible\":true}"
+    },
+    {
+      "id": "E13",
+      "name": "no JS console/page errors during missing-key flow",
+      "pass": true,
+      "detail": "{\"console\":[],\"page\":[]}"
+    }
+  ]
+}

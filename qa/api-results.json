@@ -1,0 +1,215 @@
+{
+  "generatedAt": "2026-10-23T23:54:22.529Z",
+  "results": [
+    {
+      "id": "A1",
+      "name": "health mock mode",
+      "pass": true,
+      "detail": "status=200 body={\"ok\":true,\"apiKeyConfigured\":false,\"mock\":true,\"version\":\"1.0.0\"}"
+    },
+    {
+      "id": "A2",
+      "name": "valid search returns normalized results",
+      "pass": true,
+      "detail": "status=200 len=8 mock=true count=10 fields=true"
+    },
+    {
+      "id": "A3",
+      "name": "count forwarded/clamped in mock",
+      "pass": true,
+      "detail": "status=200 body={\"results\":[{\"rerank_score\":2.91,\"title\":\"DeepSeek Search API: real-time web results for agents\",\"url\":\"https://api-docs.deepseek.com/guides/search\",\""
+    },
+    {
+      "id": "A4",
+      "name": "missing body -> 400 invalid_request",
+      "pass": true,
+      "detail": "status=400 body={\"error\":{\"code\":\"invalid_request\",\"message\":\"Request body must be valid JSON.\"}}"
+    },
+    {
+      "id": "A5",
+      "name": "non-JSON body -> 400 invalid_request",
+      "pass": true,
+      "detail": "status=400 body={\"error\":{\"code\":\"invalid_request\",\"message\":\"Request body must be valid JSON.\"}}"
+    },
+    {
+      "id": "A6",
+      "name": "empty query -> 400",
+      "pass": true,
+      "detail": "status=400 body={\"error\":{\"code\":\"invalid_request\",\"message\":\"Query must be between 1 and 128 characters.\"}}"
+    },
+    {
+      "id": "A7",
+      "name": "129-char query -> 400",
+      "pass": true,
+      "detail": "status=400 body={\"error\":{\"code\":\"invalid_request\",\"message\":\"Query must be between 1 and 128 characters.\"}}"
+    },
+    {
+      "id": "A8",
+      "name": "count 0 -> 400",
+      "pass": true,
+      "detail": "status=400 body={\"error\":{\"code\":\"invalid_request\",\"message\":\"Count must be an integer between 1 and 50.\"}}"
+    },
+    {
+      "id": "A9",
+      "name": "count 51 -> 400",
+      "pass": true,
+      "detail": "status=400 body={\"error\":{\"code\":\"invalid_request\",\"message\":\"Count must be an integer between 1 and 50.\"}}"
+    },
+    {
+      "id": "A10",
+      "name": "GET /api/search -> 405 Allow POST",
+      "pass": true,
+      "detail": "status=405 allow=POST"
+    },
+    {
+      "id": "A11",
+      "name": "POST /api/health -> 405 Allow GET",
+      "pass": true,
+      "detail": "status=405 allow=GET, HEAD"
+    },
+    {
+      "id": "A12",
+      "name": "static / 200 text/html",
+      "pass": true,
+      "detail": "status=200 type=text/html; charset=utf-8 len=16817"
+    },
+    {
+      "id": "A13",
+      "name": "static /styles.css 200 text/css",
+      "pass": true,
+      "detail": "status=200 type=text/css; charset=utf-8 len=43127"
+    },
+    {
+      "id": "A14",
+      "name": "static /app.js 200 text/javascript",
+      "pass": true,
+      "detail": "status=200 type=text/javascript; charset=utf-8 len=38103"
+    },
+    {
+      "id": "A15",
+      "name": "static /i18n.js 200 text/javascript",
+      "pass": true,
+      "detail": "status=200 type=text/javascript; charset=utf-8 len=19867"
+    },
+    {
+      "id": "A16",
+      "name": "static /favicon.svg 200 image/svg+xml",
+      "pass": true,
+      "detail": "status=200 type=image/svg+xml len=793"
+    },
+    {
+      "id": "A17",
+      "name": "HEAD /index.html 200",
+      "pass": true,
+      "detail": "status=200"
+    },
+    {
+      "id": "A18.1",
+      "name": "traversal blocked /../server.js",
+      "pass": true,
+      "detail": "status=404 body={\"error\":{\"code\":\"not_found\",\"message\":\"Not found.\"}}"
+    },
+    {
+      "id": "A18.2",
+      "name": "traversal blocked /%2e%2e/server.js",
+      "pass": true,
+      "detail": "status=404 body={\"error\":{\"code\":\"not_found\",\"message\":\"Not found.\"}}"
+    },
+    {
+      "id": "A18.3",
+      "name": "traversal blocked /%2e%2e%2fserver.js",
+      "pass": true,
+      "detail": "status=404 body={\"error\":{\"code\":\"not_found\",\"message\":\"Not found.\"}}"
+    },
+    {
+      "id": "A18.4",
+      "name": "traversal blocked /..%2fserver.js",
+      "pass": true,
+      "detail": "status=404 body={\"error\":{\"code\":\"not_found\",\"message\":\"Not found.\"}}"
+    },
+    {
+      "id": "A18.5",
+      "name": "traversal blocked /%2e%2e%5cserver.js",
+      "pass": true,
+      "detail": "status=404 body={\"error\":{\"code\":\"not_found\",\"message\":\"Not found.\"}}"
+    },
+    {
+      "id": "A18.6",
+      "name": "traversal blocked /public/../server.js",
+      "pass": true,
+      "detail": "status=404 body={\"error\":{\"code\":\"not_found\",\"message\":\"Not found.\"}}"
+    },
+    {
+      "id": "A18.7",
+      "name": "traversal blocked /%2e%2e%2f.env",
+      "pass": true,
+      "detail": "status=404 body={\"error\":{\"code\":\"not_found\",\"message\":\"Not found.\"}}"
+    },
+    {
+      "id": "A19",
+      "name": "no API key value in health/search responses",
+      "pass": true,
+      "detail": "bodies={\"ok\":true,\"apiKeyConfigured\":false,\"mock\":true,\"version\":\"1.0.0\"} | {\"results\":[{\"rerank_score\":2.91,\"title\":\"DeepSeek Search API: real-time web res | {\"ok\":true,\"apiKeyConfigured\":false,\"mock\":false,\"version\":\"1.0.0\"} | {\"error\":{\"code\":\"missing_api_key\",\"message\":\"The server is missing DEEPSEEK_API | {\"ok\":true,\"apiKeyConfigured\":true,\"mock\":false,\"version\":\"1.0.0\"} | {\"results\":[{\"rerank_score\":2.91,\"title\":\"Stub result one: DeepSeek Search docs\""
+    },
+    {
+      "id": "B1",
+      "name": "live proxy forwards auth header + need_content false + count",
+      "pass": true,
+      "detail": "status=200 upstream={\"auth\":\"Bearer test-key\",\"body\":{\"query\":\"stub-normal\",\"count\":10,\"need_content\":false}}"
+    },
+    {
+      "id": "B2",
+      "name": "live proxy sanitizes unsafe result URLs/icons",
+      "pass": true,
+      "detail": "urls=[\"https://example.com/safe\",\"http://example.com/plain\"] icons=[null,\"https://example.com/icon.png\"] len=2"
+    },
+    {
+      "id": "B3",
+      "name": "upstream 401 -> invalid_api_key",
+      "pass": true,
+      "detail": "status=502 body={\"error\":{\"code\":\"invalid_api_key\",\"message\":\"The DeepSeek API key is invalid. Update DEEPSEEK_API_KEY and restart the server.\"}}"
+    },
+    {
+      "id": "B4",
+      "name": "upstream 429 -> rate_limited",
+      "pass": true,
+      "detail": "status=429 body={\"error\":{\"code\":\"rate_limited\",\"message\":\"Search is momentarily rate limited. Please wait a moment and try again.\"}}"
+    },
+    {
+      "id": "B5",
+      "name": "upstream 500 -> upstream_error",
+      "pass": true,
+      "detail": "status=502 body={\"error\":{\"code\":\"upstream_error\",\"message\":\"The search service is temporarily unavailable. Please try again.\"}}"
+    },
+    {
+      "id": "B6",
+      "name": "malformed upstream (HTTP 200 non-JSON) -> upstream_error",
+      "pass": false,
+      "detail": "ACTUAL status=200 body={\"results\":[],\"query\":\"stub-malformed-200\",\"count\":5,\"mock\":false,\"tookMs\":1}"
+    },
+    {
+      "id": "B7",
+      "name": "upstream empty results -> 200 []",
+      "pass": true,
+      "detail": "status=200 body={\"results\":[],\"query\":\"stub-empty\",\"count\":5,\"mock\":false,\"tookMs\":2}"
+    },
+    {
+      "id": "B8",
+      "name": "live health apiKeyConfigured true mock false",
+      "pass": true,
+      "detail": "body={\"ok\":true,\"apiKeyConfigured\":true,\"mock\":false,\"version\":\"1.0.0\"}"
+    },
+    {
+      "id": "B9",
+      "name": "browser payload/health never contains key",
+      "pass": true,
+      "detail": "search headers=[] searchBody={\"results\":[{\"rerank_score\":2.91,\"title\":\"Stub result one: DeepSeek Search docs\",\"url\":\"https://example.com/docs/one\",\"s"
+    },
+    {
+      "id": "B10",
+      "name": "served HTML/JS does not embed key",
+      "pass": true,
+      "detail": "index contains key=false"
+    }
+  ]
+}
